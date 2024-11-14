@@ -15,13 +15,14 @@ export default function ResultTable() {
         setLoading(true);
 
         // Fetch data from the server
-        getServerData(`${process.env.REACT_APP_SERVER_HOSTNAME}/api/result/${activeQuizId}`, (res, err) => {
+        getServerData(`${import.meta.env.VITE_SERVER_HOSTNAME}/api/result/${activeQuizId}`, (res, err) => {
             if (err) {
                 setError(err);
                 setLoading(false);
                 return;
             }
             setData(res);
+            console.log(res);
             setLoading(false);
         });
     }, [activeQuizId]); // This will trigger a re-fetch whenever the active quiz ID changes

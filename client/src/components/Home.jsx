@@ -5,16 +5,19 @@ import { setUserId } from '../redux/Result_reducer';
 import '../styles/Home.css';
 // import { useNavigate } from 'react-router-dom';
 import * as Action from '../redux/Question_reducer';
+import { UserButton } from '@clerk/clerk-react';
+import { useUser } from '@clerk/clerk-react';
 
 export default function Home() {
     const inputRef = useRef(null);
     const dispatch = useDispatch();
     // const navigate = useNavigate();
+    const { isSignedIn, user } = useUser();
 
     // Function to set userId and dispatch it to the store
     function startQuiz(activeQuizId) {
-        if(inputRef.current?.value){
-            dispatch(setUserId(inputRef.current?.value))
+        if(isSignedIn){
+            dispatch(setUserId(user.username))
         }
         // navigate(`/quiz/${quizId}`);
         dispatch(Action.setActiveQuiz(activeQuizId));
@@ -23,6 +26,7 @@ export default function Home() {
 
     return (
         <div className='container'>
+            <UserButton />
             <h1 className='title text-light'>Quiz Application</h1>
 
             <ol>
@@ -33,7 +37,7 @@ export default function Home() {
                 <li>The result will be declared at the end of the quiz.</li>
             </ol>
 
-            <form id="form">
+            {/* <form id="form">
                 <input
                     ref={inputRef}
                     className="userid"
@@ -41,7 +45,7 @@ export default function Home() {
                     placeholder='Username*'
                     required
                 />
-            </form>
+            </form> */}
 
             <div className='start'>
                 {/* Start Quiz 1 */}

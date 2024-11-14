@@ -54,6 +54,11 @@ export default function Quiz() {
         return <Navigate to={'/result'} replace={true}></Navigate>
     }
 
+    // if (!queue || queue.length === 0) {
+    //     return <h3 className="text-light">Loading questions...</h3>;
+    // }
+
+
   return (
     <div className='container'>
         <h1 className='title text-light'>Quiz Application</h1>

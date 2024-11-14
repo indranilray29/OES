@@ -20,7 +20,7 @@ export const useFetchQuestion = (quizId) => {
             try {
                 // Fetch the data for the specific quizId
                 const [{ questions, answers }] = await getServerData(
-                    `${import.meta.env.REACT_APP_SERVER_HOSTNAME}/api/questions/${quizId}`,
+                    `${import.meta.env.VITE_SERVER_HOSTNAME}/api/questions/${quizId}`,
                     // quizId, // Pass quizId to callback in case needed in helper functions
                 );
 
