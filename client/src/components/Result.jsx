@@ -28,6 +28,28 @@ export default function Result() {
     const [viewResult, setViewResult] = useState(false);
     const [isPublished, setIsPublished] = useState(false);  // New state to track publish status
 
+    // Assuming usePublishResult returns a function to publish the result
+const publishResult = usePublishResult();
+
+useEffect(() => {
+    const publishData = async () => {
+        if (result.length > 0 && userId) {
+            await publishResult({ 
+                result, 
+                username: userId,
+                attempts,
+                points: earnPoints,
+                achieved: flag ? "Passed" : "Failed" 
+            }, activeQuizId);
+            setIsPublished(true); // Mark as published
+        }
+    };
+
+    if (!isPublished) {
+        publishData();
+    }
+}, [isPublished, result, userId, attempts, earnPoints, flag, activeQuizId, publishResult]);
+
     // Use usePublishResult hook
     // Publish result only once when component mounts or if data changes
     // usePublishScore([isPublished,setIsPublished],{ 
@@ -57,12 +79,12 @@ export default function Result() {
     // }, [isPublished, result, userId, attempts, earnPoints, flag, activeQuizId]);
 
     // if(!isPublished){
-        usePublishResult({ 
-            result, 
-            username : userId,
-            attempts,
-            points: earnPoints,
-            achieved : flag ? "Passed" : "Failed" }, activeQuizId);
+        // usePublishResult({ 
+        //     result, 
+        //     username : userId,
+        //     attempts,
+        //     points: earnPoints,
+        //     achieved : flag ? "Passed" : "Failed" }, activeQuizId);
     // }
 
     // setIsPublished(true);
@@ -80,30 +102,30 @@ export default function Result() {
 
     return (
         <div className='container'>
-            <h1 className='title text-light'>Quiz Application</h1>
+            <h1 className='title text-light1'>Quiz Application</h1>
 
-            <div className='result flex-center'>
-                <div className='flex'>
+            <div className='result flex-center1'>
+                <div className='flex1'>
                     <span>Username</span>
                     <span className='bold'>{userId || ""}</span>
                 </div>
-                <div className='flex'>
+                <div className='flex1'>
                     <span>Total Quiz Points : </span>
                     <span className='bold'>{totalPoints || 0}</span>
                 </div>
-                <div className='flex'>
+                <div className='flex1'>
                     <span>Total Questions : </span>
                     <span className='bold'>{queue.length || 0}</span>
                 </div>
-                <div className='flex'>
+                <div className='flex1'>
                     <span>Total Attempts : </span>
                     <span className='bold'>{attempts || 0}</span>
                 </div>
-                <div className='flex'>
+                <div className='flex1'>
                     <span>Total Earn Points : </span>
                     <span className='bold'>{earnPoints || 0}</span>
                 </div>
-                <div className='flex'>
+                <div className='flex1'>
                     <span>Quiz Result</span>
                     <span style={{ color: `${flag ? "#2aff95" : "#ff2a66"}` }} className='bold'>{flag ? "Passed" : "Failed"}</span>
                 </div>

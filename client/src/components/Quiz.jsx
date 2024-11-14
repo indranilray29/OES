@@ -61,13 +61,13 @@ export default function Quiz() {
 
   return (
     <div className='container'>
-        <h1 className='title text-light'>Quiz Application</h1>
+        <h1 className='title text-light1'>Quiz Application</h1>
 
         <Timer />
         {/* display questions */}
         <Questions onChecked={onChecked} />
 
-        <div className='grid'>
+        <div className='grid1'>
             { trace > 0 ? <button className='btn prev' onClick={onPrev}>Prev</button> : <div></div>}
             <button className='btn next' onClick={onNext}>Next</button>
         </div>

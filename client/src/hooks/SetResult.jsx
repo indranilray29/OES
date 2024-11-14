@@ -17,9 +17,9 @@ export const updateResult = (index) => async (dispatch) => {
 }
 
 /** insert user data */
-export const usePublishResult = (resultData, quizId) => {
+export const usePublishResult = () =>  { return async (resultData, quizId) => {
     const { result, username } = resultData;
-    return (async () => {
+     (async () => {
         try {
             if(result.length === 0 && !username) throw new Error("Couldn't get Result");
             await postServerData(`${import.meta.env.VITE_SERVER_HOSTNAME}/api/result/${quizId}`, resultData, data => data);
@@ -27,5 +27,6 @@ export const usePublishResult = (resultData, quizId) => {
             console.error(error);
         }
     })();
+    }
 }
 

@@ -30,12 +30,12 @@ export default function Questions({ onChecked }) {
     }
 
 
-    if(isLoading) return <h3 className='text-light'>isLoading</h3>
-    if(serverError) return <h3 className='text-light'>{serverError || "Unknown Error"}</h3>
+    if(isLoading) return <h3 className='text-light1'>isLoading</h3>
+    if(serverError) return <h3 className='text-light1'>{serverError || "Unknown Error"}</h3>
 
   return (
     <div className='questions'>
-        <h2 className='text-light'>{questions?.question}</h2>
+        <h2 className='text-light1'>{questions?.question}</h2>
 
         <ul key={questions?.id}>
             {

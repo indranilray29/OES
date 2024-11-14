@@ -27,7 +27,7 @@ export default function Home() {
     return (
         <div className='container'>
             <UserButton />
-            <h1 className='title text-light'>Quiz Application</h1>
+            <h1 className='title text-light1'>Online Examination System</h1>
 
             <ol>
                 <li>You will be asked 10 questions one after another.</li>

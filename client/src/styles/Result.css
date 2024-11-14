@@ -1,6 +1,6 @@
 
 
-.flex-center{
+.flex-center1{
     display: flex;
     justify-content: center;    
     flex-direction: column;
@@ -9,18 +9,18 @@
     gap: 1em;
 }
 
-.container .flex{
+.container .flex1{
     display: flex;
     justify-content: space-between;
     
 }
 
-.container .flex span {
+.container .flex1 span {
     font-size: 1.4em;
     color: #cecece;
 }
 
-.container .flex span.achive {
+.container .flex1 span.achive {
     font-weight: bold;
     color: #ff2a66;
     color: #2aff95;
