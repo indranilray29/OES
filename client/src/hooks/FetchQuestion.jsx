@@ -60,3 +60,41 @@ export const MovePrevQuestion = (quizId) => async (dispatch) => {
         console.log(error);
     }
 };
+
+export const useFetchAiQuestion = () => {
+    const dispatch = useDispatch();
+    const [getAiData, setGetAiData] = useState({ isLoading: false, apiData: [], serverError: null });
+
+    useEffect(() => {
+        setGetAiData(prev => ({ ...prev, isLoading: true }));
+
+      return () => {
+        
+        (
+            async () => {
+                try {
+                    const [{ quizId, questions, answers }] = await getServerData(
+                        `${import.meta.env.VITE_SERVER_HOSTNAME}/api/ai/questions`);
+                    
+                        if (questions.length > 0) {
+                            setGetAiData(prev => ({ ...prev, isLoading: false }));
+                            setGetAiData(prev => ({ ...prev, apiData: questions }));
+        
+                            // Dispatch action with quizId and data to store
+                            dispatch(Action.startExamAction({ question: questions, answers, activeQuizId: quizId }));
+                            console.log(questions);
+                            
+                        } else {
+                            throw new Error("No Questions Available");
+                        }
+                } catch (error) {
+                    setGetAiData(prev => ({ ...prev, isLoading: false }));
+                    setGetAiData(prev => ({ ...prev, serverError: error.message }));
+                }
+            }
+        )();
+      }
+    }, [dispatch])
+
+    return [getAiData, setGetAiData];
+}

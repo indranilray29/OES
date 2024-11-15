@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { setUserId } from '../redux/Result_reducer';
 import '../styles/Home.css';
 // import { useNavigate } from 'react-router-dom';
@@ -22,6 +22,13 @@ export default function Home() {
         // navigate(`/quiz/${quizId}`);
         dispatch(Action.setActiveQuiz(activeQuizId));
 
+    }
+
+    function startAiQuiz() {
+        if(isSignedIn){
+            dispatch(setUserId(user.username))
+        }
+        <Navigate to={'/aiQuiz'} replace={true} />
     }
 
     return (
@@ -66,6 +73,17 @@ export default function Home() {
                     onClick={() => startQuiz(2)} 
                 >
                     Start Quiz 2
+                </Link>
+            </div>
+
+            <div className='start'>
+                {/* Start Quiz 2 */}
+                <Link 
+                    className='btn' 
+                    to={'/quiz'} 
+                    onClick={() => startAiQuiz} 
+                >
+                    Start AI Quiz 
                 </Link>
             </div>
         </div>

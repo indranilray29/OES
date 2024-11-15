@@ -16,4 +16,9 @@ router.route('/result/:quizId')
         .post(controller.storeResult)
         .delete(controller.dropResult)
 
+router.route('/ai/questions')
+        .get(controller.getAiQuestions)
+        .post(controller.generateAiQuiz)
+        .delete(controller.dropAiQuestions)
+
 export default router;

@@ -7,6 +7,7 @@ import Auth from './components/Auth';
 import { CheckUserExist } from './helper/Helper';
 import Quiz from './components/Quiz';
 import Result from './components/Result';
+import AiQuiz from './components/AiQuiz';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path : '/result',
     element : <CheckUserExist><Result /></CheckUserExist>
+  },
+  {
+    path : '/aiQuiz',
+    element : <CheckUserExist><AiQuiz /></CheckUserExist>
   },
 ])
 
