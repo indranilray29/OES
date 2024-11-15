@@ -216,7 +216,7 @@ export async function generateAiQuiz(req,res) {
     }
     
     catch (error) {
-        res.status(500).json({ error: error.message });e
+        res.status(500).json({ error: error.message });
     }
 }
 

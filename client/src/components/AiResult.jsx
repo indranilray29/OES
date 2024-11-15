@@ -10,7 +10,7 @@ import { attempts_Number, earnPoints_Number, flagResult } from "../helper/Helper
 /** import actions  */
 import { resetAllAction } from '../redux/Question_reducer';
 import { resetResultAction } from '../redux/Result_reducer';
-import { usePublishResult } from '../hooks/SetResult';
+import { deleteAiResults, usePublishResult } from '../hooks/SetResult';
 
 import ReviewAnswers from './ReviewAnswers';
 // import { usePublishScore } from '../hooks/publishScore';
@@ -28,7 +28,7 @@ export default function AiResult() {
     const earnPoints = earnPoints_Number(result, answers, 10);
     const flag = flagResult(totalPoints, earnPoints);
 
-    const [viewResult, setViewResult] = useState(false);
+    // const [viewResult, setViewResult] = useState(false);
     const [isPublished, setIsPublished] = useState(false);  // New state to track publish status
 
     // Assuming usePublishResult returns a function to publish the result
@@ -92,17 +92,30 @@ useEffect(() => {
 
     // setIsPublished(true);
 
-    const viewRes = () => {
-        setViewResult(true);
-    }
+    // const viewRes = () => {
+    //     setViewResult(true);
+    // }
 
-    function onRestart() {
+    async function onRestart() {
         dispatch(resetAllAction());
         dispatch(resetResultAction());
         setViewResult(false);
         setIsPublished(false);
-        deleteAiQuestions();
+        
+        await deleteAiQuestions();
     }
+
+    const handleDelete = async () => {
+        try {
+            await deleteAiQuestions(); // Wait for the deletion to complete
+            await deleteAiResults(activeQuizId);
+            // Optionally update the UI or state here
+            alert("AI questions deleted successfully!");
+        } catch (error) {
+            console.error("Error deleting AI questions:", error);
+            alert("Failed to delete AI questions.");
+        }
+    };
 
     return (
         <div className='container'>
@@ -134,7 +147,7 @@ useEffect(() => {
                     <span style={{ color: `${flag ? "#2aff95" : "#ff2a66"}` }} className='bold'>{flag ? "Passed" : "Failed"}</span>
                 </div>
             </div>
-
+            <button onClick={handleDelete}>Delete AI Questions</button>
             <div className="start">
                 <Link className='btn' to={'/'} onClick={onRestart}>Restart</Link>
             </div>

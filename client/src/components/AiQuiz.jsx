@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import AiQuestions from './AiQuestions';
 import AiQuizForm from './AiQuizForm';
+import AiTimer from './AiTimer';
 
 export default function AiQuiz() {
 
@@ -73,7 +74,7 @@ export default function AiQuiz() {
         <AiQuizForm onComplete={handleFormComplete} />
         { ! isQuizLoading && 
         <>
-        <Timer />
+        <AiTimer />
         {/* display questions */}
         <AiQuestions onChecked={onChecked} />
 
