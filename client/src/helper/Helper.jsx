@@ -34,3 +34,14 @@ export async function postServerData(url, result, callback){
     return callback ? callback(data) : data;
 }
 
+/** delete server data */
+export async function deleteServerData(url, callback) {
+    try {
+        const response = await axios.delete(url);
+        const data = response.data; // Get the data from the response
+        return callback ? callback(data) : data; // Call the callback if provided
+    } catch (error) {
+        console.error("Error deleting data:", error);
+        throw error; // You can throw the error or handle it as needed
+    }
+}

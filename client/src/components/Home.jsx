@@ -7,12 +7,14 @@ import '../styles/Home.css';
 import * as Action from '../redux/Question_reducer';
 import { UserButton } from '@clerk/clerk-react';
 import { useUser } from '@clerk/clerk-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
     const inputRef = useRef(null);
     const dispatch = useDispatch();
     // const navigate = useNavigate();
     const { isSignedIn, user } = useUser();
+    const navigate = useNavigate();
 
     // Function to set userId and dispatch it to the store
     function startQuiz(activeQuizId) {
@@ -28,7 +30,8 @@ export default function Home() {
         if(isSignedIn){
             dispatch(setUserId(user.username))
         }
-        <Navigate to={'/aiQuiz'} replace={true} />
+        // <Navigate to={'/aiQuiz'} replace={true} />
+        // navigate('/aiQuiz');
     }
 
     return (
@@ -80,8 +83,8 @@ export default function Home() {
                 {/* Start Quiz 2 */}
                 <Link 
                     className='btn' 
-                    to={'/quiz'} 
-                    onClick={() => startAiQuiz} 
+                    to={'/aiQuiz'} 
+                    onClick={() => startAiQuiz()} 
                 >
                     Start AI Quiz 
                 </Link>

@@ -67,8 +67,6 @@ export const useFetchAiQuestion = () => {
 
     useEffect(() => {
         setGetAiData(prev => ({ ...prev, isLoading: true }));
-
-      return () => {
         
         (
             async () => {
@@ -82,7 +80,7 @@ export const useFetchAiQuestion = () => {
         
                             // Dispatch action with quizId and data to store
                             dispatch(Action.startExamAction({ question: questions, answers, activeQuizId: quizId }));
-                            console.log(questions);
+                            // console.log(questions);
                             
                         } else {
                             throw new Error("No Questions Available");
@@ -93,7 +91,7 @@ export const useFetchAiQuestion = () => {
                 }
             }
         )();
-      }
+      
     }, [dispatch])
 
     return [getAiData, setGetAiData];

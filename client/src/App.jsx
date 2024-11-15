@@ -8,6 +8,7 @@ import { CheckUserExist } from './helper/Helper';
 import Quiz from './components/Quiz';
 import Result from './components/Result';
 import AiQuiz from './components/AiQuiz';
+import AiResult from './components/AiResult';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
     path : '/aiQuiz',
     element : <CheckUserExist><AiQuiz /></CheckUserExist>
   },
+  {
+    path : '/aiResult',
+    element : <CheckUserExist><AiResult /></CheckUserExist>
+  }
 ])
 
 export default function App() {

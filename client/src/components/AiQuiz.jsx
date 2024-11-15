@@ -10,6 +10,7 @@ import Timer from './Timer';
 import { useSelector, useDispatch } from 'react-redux'
 import { Navigate } from 'react-router-dom'
 import AiQuestions from './AiQuestions';
+import AiQuizForm from './AiQuizForm';
 
 export default function AiQuiz() {
 
@@ -52,7 +53,7 @@ export default function AiQuiz() {
     /** finished exam after the last question */
     if(result.length && result.length >= queue.length){
         dispatch(setReviewDataAction({ result: result, correctAnswers: answers}));
-        return <Navigate to={'/result'} replace={true}></Navigate>
+        return <Navigate to={'/aiResult'} replace={true}></Navigate>
     }
 
     // if (!queue || queue.length === 0) {
@@ -63,7 +64,7 @@ export default function AiQuiz() {
   return (
     <div className='container'>
         <h1 className='title text-light1'>Quiz Application</h1>
-
+        <AiQuizForm />
         <Timer />
         {/* display questions */}
         <AiQuestions onChecked={onChecked} />

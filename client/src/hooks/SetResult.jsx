@@ -1,5 +1,6 @@
 import { postServerData } from '../helper/Helper'
 import * as Action from '../redux/Result_reducer'
+import { deleteServerData } from '../helper/Helper';
 
 export const PushAnswer = (result) => async (dispatch) => {
     try {
@@ -30,3 +31,14 @@ export const usePublishResult = () =>  { return async (resultData, quizId) => {
     }
 }
 
+
+
+// Example usage
+export const deleteAiQuestions = async () => {
+    try {
+        const response = await deleteServerData(`${import.meta.env.VITE_SERVER_HOSTNAME}/api/ai/questions`);
+        console.log("Delete successful:", response);
+    } catch (error) {
+        console.error("Delete failed:", error);
+    }
+};

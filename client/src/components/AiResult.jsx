@@ -15,7 +15,10 @@ import { usePublishResult } from '../hooks/SetResult';
 import ReviewAnswers from './ReviewAnswers';
 // import { usePublishScore } from '../hooks/publishScore';
 
-export default function Result() {
+// import { deleteServerData } from '../helper/Helper';
+import { deleteAiQuestions } from '../hooks/SetResult';
+
+export default function AiResult() {
     const dispatch = useDispatch();
     const { questions: { queue, answers, activeQuizId }, result: { result, userId } } = useSelector(state => state);
     const { reviewMode } = useSelector((state) => state.result);
@@ -98,6 +101,7 @@ useEffect(() => {
         dispatch(resetResultAction());
         setViewResult(false);
         setIsPublished(false);
+        deleteAiQuestions();
     }
 
     return (
@@ -139,7 +143,7 @@ useEffect(() => {
                 {reviewMode && <ReviewAnswers />}
             </div>
 
-            <div 
+            {/* <div 
             // style = {{
             //     display: 'flex',
             //     justifyContent: 'center',
@@ -152,13 +156,13 @@ useEffect(() => {
                 <button 
                 className='btn'
                 onClick={ viewRes }>View Result Table</button>
-            </div>
+            </div> */}
 
-            <div className="container">
+            {/* <div className="container"> */}
                 {/* result table */}
-                { viewResult && <ResultTable />}
+                {/* { viewResult && <ResultTable />} */}
                 {/* <ResultTable /> */}
-            </div>
+            {/* </div> */}
         </div>
     );
 }
