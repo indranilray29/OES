@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { postServerData } from '../helper/Helper';
 
-export default function AiQuizForm() {
+export default function AiQuizForm( {onComplete} ) {
     const [topic, setTopic] = useState('');
     const [numQuestions, setNumQuestions] = useState(5);
     const [difficulty, setDifficulty] = useState('easy');
@@ -18,6 +18,7 @@ export default function AiQuizForm() {
             });
             console.log("Quiz generated:", response.data);
             alert("Quiz has been successfully generated!");
+            onComplete();
         } catch (error) {
             console.error("Error generating quiz:", error);
             alert("Failed to generate quiz.");

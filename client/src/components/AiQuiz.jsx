@@ -22,6 +22,12 @@ export default function AiQuiz() {
     const { queue, trace } = useSelector(state => state.questions);
     const dispatch = useDispatch()
 
+    const [isQuizLoading, setIsQuizLoading] = useState(true);
+
+    const handleFormComplete = () => {
+        setIsQuizLoading(false); // Set loading to false when form operations are complete
+    };
+
     /** next button event handler */
     function onNext(){
         if(trace < queue.length){
@@ -64,7 +70,9 @@ export default function AiQuiz() {
   return (
     <div className='container'>
         <h1 className='title text-light1'>Quiz Application</h1>
-        <AiQuizForm />
+        <AiQuizForm onComplete={handleFormComplete} />
+        { ! isQuizLoading && 
+        <>
         <Timer />
         {/* display questions */}
         <AiQuestions onChecked={onChecked} />
@@ -73,6 +81,8 @@ export default function AiQuiz() {
             { trace > 0 ? <button className='btn prev' onClick={onPrev}>Prev</button> : <div></div>}
             <button className='btn next' onClick={onNext}>Next</button>
         </div>
+        </>
+        }
     </div>
   )
 }
