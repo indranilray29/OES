@@ -47,5 +47,5 @@ export default {
             ]
         }
     ],
-    answers: [0, 1, 2, 1, 2]
+    answers: [0, 1, 2, 1, 1]
 };

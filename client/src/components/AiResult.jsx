@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../styles/Result.css';
 import '../styles/Home.css';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import ResultTable from './ResultTable';
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,6 +23,7 @@ export default function AiResult() {
     const dispatch = useDispatch();
     const { questions: { queue, answers, activeQuizId }, result: { result, userId } } = useSelector(state => state);
     const { reviewMode } = useSelector((state) => state.result);
+    const navigate = useNavigate();
 
     const totalPoints = queue.length * 10; 
     const attempts = attempts_Number(result);
@@ -97,25 +99,34 @@ useEffect(() => {
     // }
 
     async function onRestart() {
-        dispatch(resetAllAction());
-        dispatch(resetResultAction());
-        setViewResult(false);
-        setIsPublished(false);
-        
-        await deleteAiQuestions();
+        try {
+            // Reset state
+            dispatch(resetAllAction());
+            dispatch(resetResultAction());
+
+            // Delete AI questions and results
+            await deleteAiQuestions();
+            await deleteAiResults(activeQuizId);
+
+            // Navigate to the home page
+            navigate('/');
+        } catch (error) {
+            console.error("Error during restart and delete:", error);
+            alert("Failed to restart and delete AI questions.");
+        }
     }
 
-    const handleDelete = async () => {
-        try {
-            await deleteAiQuestions(); // Wait for the deletion to complete
-            await deleteAiResults(activeQuizId);
-            // Optionally update the UI or state here
-            alert("AI questions deleted successfully!");
-        } catch (error) {
-            console.error("Error deleting AI questions:", error);
-            alert("Failed to delete AI questions.");
-        }
-    };
+    // const handleDelete = async () => {
+    //     try {
+    //         await deleteAiQuestions(); // Wait for the deletion to complete
+    //         await deleteAiResults(activeQuizId);
+    //         // Optionally update the UI or state here
+    //         alert("AI questions deleted successfully!");
+    //     } catch (error) {
+    //         console.error("Error deleting AI questions:", error);
+    //         alert("Failed to delete AI questions.");
+    //     }
+    // };
 
     return (
         <div className='container'>
@@ -147,9 +158,9 @@ useEffect(() => {
                     <span style={{ color: `${flag ? "#2aff95" : "#ff2a66"}` }} className='bold'>{flag ? "Passed" : "Failed"}</span>
                 </div>
             </div>
-            <button onClick={handleDelete}>Delete AI Questions</button>
+            {/* <button onClick={handleDelete}>Delete AI Questions</button> */}
             <div className="start">
-                <Link className='btn' to={'/'} onClick={onRestart}>Restart</Link>
+                <button className='btn' onClick={onRestart}>Restart</button>
             </div>
 
             <div style={{ marginTop: "20px"}}>
