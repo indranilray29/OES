@@ -1,6 +1,6 @@
-// src/components/GenerateQuizForm.js
 import React, { useState } from 'react';
 import { postServerData } from '../helper/Helper';
+import '../styles/AiQuizForm.css';
 
 export default function AiQuizForm( {onComplete} ) {
     const [topic, setTopic] = useState('');

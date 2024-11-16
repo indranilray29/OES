@@ -58,8 +58,8 @@ const Timer = () => {
   const seconds = timer % 60;
 
   return (
-    <div>
-      <p style={{ color: "white", fontSize: "1.5rem" }}>
+    <div style={{ display: "flex", justifyItems: "center"}}>
+      <p style={{ color: "white", fontSize: "1.5rem", border: "3px solid white", borderRadius: "20%" , padding: "5px"}}>
         Time Left: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
       </p>
     </div>

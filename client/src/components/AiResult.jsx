@@ -119,7 +119,7 @@ useEffect(() => {
 
     return (
         <div className='container'>
-            <h1 className='title text-light1'>Quiz Application</h1>
+            <h1 className='title text-light1'>Online Examination System</h1>
 
             <div className='result flex-center1'>
                 <div className='flex1'>
@@ -152,7 +152,7 @@ useEffect(() => {
                 <Link className='btn' to={'/'} onClick={onRestart}>Restart</Link>
             </div>
 
-            <div>
+            <div style={{ marginTop: "20px"}}>
                 {reviewMode && <ReviewAnswers />}
             </div>
 

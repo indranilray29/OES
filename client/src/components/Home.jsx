@@ -56,7 +56,7 @@ export default function Home() {
                     required
                 />
             </form> */}
-
+            <div style={{ display: "flex", justifyItems: "center", gap: "10%", flexWrap: "wrap" }}>
             <div className='start'>
                 {/* Start Quiz 1 */}
                 <Link 
@@ -64,7 +64,7 @@ export default function Home() {
                     to={'/quiz'} 
                     onClick={() => startQuiz(1)} 
                 >
-                    Start Quiz 1
+                    Javascript Quiz
                 </Link>
             </div>
 
@@ -75,20 +75,68 @@ export default function Home() {
                     to={'/quiz'} 
                     onClick={() => startQuiz(2)} 
                 >
-                    Start Quiz 2
+                    Geography Quiz
+                </Link>
+            </div>
+
+
+            <div className='start'>
+                {/* Start Quiz 4 */}
+                <Link 
+                    className='btn' 
+                    to={'/quiz'} 
+                    onClick={() => startQuiz(4)} 
+                >
+                    React Quiz
                 </Link>
             </div>
 
             <div className='start'>
-                {/* Start Quiz 2 */}
+                {/* Start Quiz 3 */}
                 <Link 
                     className='btn' 
+                    to={'/quiz'} 
+                    onClick={() => startQuiz(3)} 
+                >
+                    Mathematics Quiz
+                </Link>
+            </div>
+
+            <div className='start'>
+                {/* Start Quiz 5 */}
+                <Link 
+                    className='btn' 
+                    to={'/quiz'} 
+                    onClick={() => startQuiz(5)} 
+                >
+                    Science Quiz
+                </Link>
+            </div>
+
+            <div className='start'>
+                {/* Start Quiz 6 */}
+                <Link 
+                    className='btn' 
+                    to={'/quiz'} 
+                    onClick={() => startQuiz(6)} 
+                >
+                    English Quiz
+                </Link>
+            </div>
+
+            </div>
+
+            <div className='start' style={{ marginTop: "20px"}}>
+                {/* Start Quiz 2 */}
+                <Link 
+                    className='aibtn' 
                     to={'/aiQuiz'} 
                     onClick={() => startAiQuiz()} 
                 >
                     Start AI Quiz 
                 </Link>
             </div>
+            
         </div>
     );
 }

@@ -70,7 +70,7 @@ export default function AiQuiz() {
 
   return (
     <div className='container'>
-        <h1 className='title text-light1'>Quiz Application</h1>
+        <h1 className='title text-light1'>Online Examination System</h1>
         <AiQuizForm onComplete={handleFormComplete} />
         { ! isQuizLoading && 
         <>

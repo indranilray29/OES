@@ -1,0 +1,57 @@
+/* AiQuizForm.css */
+
+form {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+form label {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+form input, form select, form button {
+    width: 95%;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+form input:focus, form select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+form button {
+    width: 100%;
+    background-color: hsla(131, 79%, 42%, 0.776);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: hsl(131, 79%, 42%);
+}
+
+form button:active {
+    background-color: hsl(131, 79%, 42%);
+    ;
+}
+
+@media (max-width: 480px) {
+    form {
+        padding: 1rem;
+    }
+}

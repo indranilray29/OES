@@ -7,7 +7,7 @@ export const questionReducer = createSlice({
         queue: [],
         answers : [],
         trace : 0,
-        timer: 15,
+        timer: 30,
         isSubmitted: false,
         activeQuizId: null
     },
@@ -41,7 +41,7 @@ export const questionReducer = createSlice({
                 queue: [],
                 answers : [],
                 trace : 0,
-                timer: 15,
+                timer: 30,
                 activeQuizId: null
             }
         },

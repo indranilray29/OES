@@ -3,49 +3,49 @@ export default {
     questions: [
         {
             id: 1,
-            question: "demo question",
+            question: "Which is the largest continent by area?",
             options: [
-                'Option-1',
-                'Option-2',
-                'Option-3',
+                'Africa',
+                'Asia',
+                'Antarctica',
             ]
         },
         {
             id: 2,
-            question: "Following methods can be used to display data in some form using Javascript",
+            question: "Which river is the longest in the world?",
             options: [
-                'document.write()',
-                'console.log()',
-                'window.alert()',
+                'Amazon',
+                'Nile',
+                'Yangtze',
             ]
         },
         {
             id: 3,
-            question: "When an operator value is NULL, the typeof returned by the unary operator is:",
+            question: "What is the capital city of Australia?",
             options: [
-                'Boolean',
-                'Undefined',
-                'Object',
+                'Sydney',
+                'Melbourne',
+                'Canberra',
             ]
         },
         {
             id: 4,
-            question: "What does the toString() method return?",
+            question: "Which desert is the largest in the world?",
             options: [
-                'Return Object',
-                'Return String',
-                'Return Integer'
+                'Sahara',
+                'Arctic',
+                'Gobi',
             ]
         },
         {
             id: 5,
-            question: "Which function is used to serialize an object into a JSON string?",
+            question: "Mount Everest is located in which mountain range?",
             options: [
-                'stringify()',
-                'parse()',
-                'convert()',
+                'Andes',
+                'Himalayas',
+                'Rockies',
             ]
         }
     ],
-    answers: [0, 1, 2, 1, 0]
+    answers: [1, 1, 2, 0, 1]
 };
