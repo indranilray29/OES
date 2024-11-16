@@ -40,7 +40,8 @@ export default function Home() {
             <h1 className='title text-light1'>Online Examination System</h1>
 
             <ol>
-                <li>You will be asked 10 questions one after another.</li>
+                <li>You will be asked 5 questions one after another.</li>
+                <li>You will get total 30 seconds of time.</li>
                 <li>10 points are awarded for the correct answer.</li>
                 <li>Each question has three options. You can choose only one option.</li>
                 <li>You can review and change answers before the quiz finishes.</li>
