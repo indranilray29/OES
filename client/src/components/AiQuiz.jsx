@@ -4,7 +4,7 @@ import Questions from './Questions'
 import { MoveNextQuestion, MovePrevQuestion } from '../hooks/FetchQuestion';
 import { PushAnswer } from '../hooks/SetResult';
 import { setReviewDataAction } from '../redux/Result_reducer';
-import Timer from './Timer';
+// import Timer from './Timer';
 
 /** redux store import */
 import { useSelector, useDispatch } from 'react-redux'
@@ -71,19 +71,22 @@ export default function AiQuiz() {
   return (
     <div className='container'>
         <h1 className='title text-light1'>Online Examination System</h1>
-        <AiQuizForm onComplete={handleFormComplete} />
-        { ! isQuizLoading && 
-        <>
-        <AiTimer />
-        {/* display questions */}
-        <AiQuestions onChecked={onChecked} />
+        {isQuizLoading ? (
+                /** Render AiQuizForm when the quiz is loading */
+                <AiQuizForm onComplete={handleFormComplete} />
+            ) : (
+                /** Render the timer and questions after form completion */
+                <>
+                    <AiTimer />
+                    {/* Display questions */}
+                    <AiQuestions onChecked={onChecked} />
 
-        <div className='grid1'>
-            { trace > 0 ? <button className='btn prev' onClick={onPrev}>Prev</button> : <div></div>}
-            <button className='btn next' onClick={onNext}>Next</button>
-        </div>
-        </>
-        }
+                    <div className='grid1'>
+                        {trace > 0 ? <button className='btn prev' onClick={onPrev}>Prev</button> : <div></div>}
+                        <button className='btn next' onClick={onNext}>Next</button>
+                    </div>
+                </>
+            )}
     </div>
   )
 }

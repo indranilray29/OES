@@ -133,7 +133,7 @@ export default function Home() {
                     to={'/aiQuiz'} 
                     onClick={() => startAiQuiz()} 
                 >
-                    Start AI Quiz 
+                    Start AI Generated Quiz
                 </Link>
             </div>
             
