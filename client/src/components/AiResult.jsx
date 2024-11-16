@@ -108,6 +108,7 @@ useEffect(() => {
             await deleteAiQuestions();
             await deleteAiResults(activeQuizId);
 
+            alert("AI questions deleted successfully!");
             // Navigate to the home page
             navigate('/');
         } catch (error) {
