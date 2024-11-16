@@ -5,7 +5,7 @@ import { ClerkProvider } from '@clerk/clerk-react'
 import "./styles/App.css"
 
 /** Redux Store */
-import store from './redux/store';
+import store from './redux/Store';
 import { Provider } from 'react-redux';
 
 // Import your publishable key
